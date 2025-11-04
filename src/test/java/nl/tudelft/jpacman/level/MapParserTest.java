@@ -10,7 +10,7 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * This is a test class for MapParser.
@@ -41,6 +41,7 @@ public class MapParserTest {
         mapParser.parseMap(map);
 
         Mockito.verify(levelFactory, Mockito.times(1)).createGhost();
-        Mockito.verify(levelFactory, Mockito.times(1)).createLevel(Mockito.any(), Mockito.any(), Mockito.any());
+        Mockito.verify(levelFactory, Mockito.times(1)).createLevel(
+            Mockito.any(), Mockito.any(), Mockito.any());
     }
 }
