@@ -24,7 +24,7 @@ public class BoardTest {
     }
     
     /**
-     * Tests Board when it contains a null square, verifies that the invariant is false and that a NullPointerException.
+     * Tests Board with null square, verifies invariant is false.
      */
     @Test
     void testBoardNullSquare() {
