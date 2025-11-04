@@ -6,12 +6,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 /**
- * Tests the functionality of the Board class, ensuring that various methods
+ * Tests the functionality of the Board class, ensuring that various methods.
  */
 public class BoardTest {
     
     /**
-     * Tests Board with single square, ensures retrieved correctly
+     * Tests Board with single square, ensures retrieved correctly.
      */
     @Test
     void testBoardOneSquare() {
@@ -24,7 +24,7 @@ public class BoardTest {
     }
     
     /**
-     * Tests Board when it contains a null square, verifies that the invariant is false and that a NullPointerException
+     * Tests Board when it contains a null square, verifies that the invariant is false and that a NullPointerException.
      */
     @Test
     void testBoardNullSquare() {
@@ -33,6 +33,6 @@ public class BoardTest {
         Board board = new Board(grid);
 
         assertThat(board.invariant()).isFalse();
-        assertThrows(NullPointerException.class,  () -> board.squareAt(0,0).getOccupants());
+        assertThrows(NullPointerException.class, () -> board.squareAt(0, 0).getOccupants());
     }
 }
