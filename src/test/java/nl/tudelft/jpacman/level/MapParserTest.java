@@ -63,11 +63,10 @@ public class MapParserTest {
                 each row or contain invalid characters
                 */
                 map.add("###");
-                map.add("#PG#");
+                map.add("#X#");
                 map.add("###");
                 mapParser.parseMap(map);
             });
-        System.out.println("Exception message: " + thrown.getMessage());
-        Assertions.assertEquals("Input text lines are not of equal width.", thrown.getMessage());
+        Assertions.assertEquals("Invalid character at 1,1: X", thrown.getMessage());
     }
 }
