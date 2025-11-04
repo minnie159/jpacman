@@ -2,6 +2,7 @@ package nl.tudelft.jpacman.level;
 
 import nl.tudelft.jpacman.board.BoardFactory;
 import nl.tudelft.jpacman.npc.ghost.Blinky;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -43,5 +44,30 @@ public class MapParserTest {
         Mockito.verify(levelFactory, Mockito.times(1)).createGhost();
         Mockito.verify(levelFactory, Mockito.times(1)).createLevel(
             Mockito.any(), Mockito.any(), Mockito.any());
+    }
+
+    /**
+     * Test for the parseMap method (bad map).
+     */
+    @Test
+    public void testParseMapWrong1() {
+        nl.tudelft.jpacman.PacmanConfigurationException thrown =
+            Assertions.assertThrows(nl.tudelft.jpacman.PacmanConfigurationException.class, () -> {
+                MockitoAnnotations.initMocks(this);
+                assertNotNull(boardFactory);
+                assertNotNull(levelFactory);
+                MapParser mapParser = new MapParser(levelFactory, boardFactory);
+                ArrayList<String> map = new ArrayList<>();
+                /*
+                Create a map with inconsistent size between
+                each row or contain invalid characters
+                */
+                map.add("###");
+                map.add("#X#");
+                map.add("###");
+                mapParser.parseMap(map);
+            });
+        System.out.println("Exception message: " + thrown.getMessage());
+        Assertions.assertEquals("Invalid character at 1,1: X", thrown.getMessage());
     }
 }
